@@ -449,6 +449,41 @@
       list-style: none;
     }
 
+    .ai-card {
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 40px;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: 18px;
+      text-align: left;
+    }
+
+    .ai-card dl {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px 24px;
+      margin: 0;
+    }
+
+    .ai-card dt {
+      font-weight: 600;
+    }
+
+    .ai-card dd {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .prompt {
+      margin: 32px 0 0;
+      padding: 24px;
+      color: var(--ink);
+      background: var(--parchment);
+      border-left: 4px solid var(--blue);
+      font-size: 17px;
+    }
+
     .resume-actions {
       display: flex;
       justify-content: center;
@@ -550,6 +585,9 @@
       }
 
       .subnav-inner {
+        height: auto;
+        min-height: 52px;
+        padding: 8px 0;
         overflow: visible;
       }
 
@@ -558,13 +596,16 @@
       }
 
       .subnav-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         width: 100%;
-        justify-content: space-between;
         gap: 8px;
       }
 
       .subnav-links a {
+        display: block;
         font-size: 12px;
+        text-align: center;
       }
 
       .tile {
@@ -596,6 +637,19 @@
 
       .course-list {
         grid-template-columns: 1fr;
+      }
+
+      .ai-card {
+        padding: 28px 24px;
+      }
+
+      .ai-card dl {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .ai-card dd + dt {
+        margin-top: 16px;
       }
 
       .footer-row {
@@ -638,6 +692,7 @@
           <li><a href="#resume">Resume</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#courses">Courses</a></li>
+          <li><a href="#ai-usage">AI Usage</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -651,6 +706,7 @@
           <li><a href="#resume">Resume</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#courses">Courses</a></li>
+          <li><a href="#ai-usage">AI Usage</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -759,6 +815,26 @@
           <li>Artificial Intelligence</li>
           <li>Web Programming</li>
         </ul>
+      </div>
+    </section>
+
+    <section class="tile tile-parchment" id="ai-usage" aria-labelledby="ai-title">
+      <div class="content center-copy">
+        <p class="eyebrow">AI usage</p>
+        <h2 id="ai-title">Built with help from AI.</h2>
+        <p class="lead">I used an AI coding assistant to create and improve this website.</p>
+
+        <div class="ai-card">
+          <dl>
+            <dt>Tool</dt>
+            <dd>OpenAI Codex</dd>
+            <dt>Use</dt>
+            <dd>Planning, HTML and CSS implementation, responsive design, accessibility checks, and browser testing.</dd>
+          </dl>
+          <blockquote class="prompt">
+            "Build a static personal website in the repo root. Use assets/profile.jpg as the profile image. Link assets/cv.pdf from the CV or Resume section."
+          </blockquote>
+        </div>
       </div>
     </section>
 
