@@ -355,6 +355,100 @@
       color: var(--muted);
     }
 
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      text-align: left;
+    }
+
+    .detail-card {
+      padding: 32px 24px;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: 18px;
+    }
+
+    .detail-card h3 {
+      color: var(--ink);
+    }
+
+    .detail-card p,
+    .detail-card li {
+      color: var(--muted);
+    }
+
+    .detail-card ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+
+    .detail-card li + li {
+      margin-top: 8px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      text-align: left;
+    }
+
+    .project {
+      padding: 40px 32px;
+      background: #2a2a2c;
+      border: 1px solid #444446;
+      border-radius: 18px;
+    }
+
+    .project-number {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project p {
+      color: #cccccc;
+    }
+
+    .project a,
+    .contact-list a {
+      color: var(--blue-dark);
+      text-decoration: none;
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 1px;
+      background: var(--hairline);
+      list-style: none;
+      text-align: left;
+    }
+
+    .course-list li {
+      padding: 24px;
+      background: var(--canvas);
+      font-weight: 600;
+    }
+
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      margin: 32px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
     .resume-actions {
       display: flex;
       justify-content: center;
@@ -438,6 +532,14 @@
       .value-number {
         margin-bottom: 24px;
       }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -447,8 +549,22 @@
         width: min(100% - 32px, var(--content));
       }
 
-      .subnav-links li:not(:last-child) {
+      .subnav-inner {
+        overflow: visible;
+      }
+
+      .subnav-title {
         display: none;
+      }
+
+      .subnav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .subnav-links a {
+        font-size: 12px;
       }
 
       .tile {
@@ -476,6 +592,10 @@
       .portrait {
         width: 90%;
         max-height: 520px;
+      }
+
+      .course-list {
+        grid-template-columns: 1fr;
       }
 
       .footer-row {
@@ -514,9 +634,11 @@
       <div class="nav-inner">
         <a class="wordmark" href="#top" aria-label="Seongyun, home">SEONGYUN</a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#interests">Interests</a></li>
+          <li><a href="#top">Introduction</a></li>
           <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -525,9 +647,11 @@
       <div class="subnav-inner">
         <a class="subnav-title" href="#top">Personal Portfolio</a>
         <ul class="subnav-links">
-          <li><a href="#about">Overview</a></li>
-          <li><a href="#interests">Values</a></li>
-          <li><a class="nav-cta" href="assets/cv.pdf" target="_blank" rel="noopener">View CV</a></li>
+          <li><a href="#top">Introduction</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -537,15 +661,16 @@
     <section class="tile tile-light hero" id="top" aria-labelledby="hero-title">
       <div class="content hero-grid">
         <div>
-          <p class="eyebrow">Hello, I'm Seongyun.</p>
-          <h1 id="hero-title">Curious. Thoughtful. Always learning.</h1>
+          <p class="eyebrow">Hello, I'm Seongyun Kwon.</p>
+          <h1 id="hero-title">Computer science student. Curious creator.</h1>
           <p class="lead">
-            A simple place to share who I am, what I care about, and the work I
-            am growing toward.
+            I am a Computer Science and Engineering undergraduate at Seoul
+            National University interested in technology, programming, and
+            creative problem-solving.
           </p>
           <div class="actions">
             <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">View my CV</a>
-            <a class="button button-secondary" href="#about">Learn more</a>
+            <a class="button button-secondary" href="#resume">Learn more</a>
           </div>
         </div>
 
@@ -560,56 +685,92 @@
       </div>
     </section>
 
-    <section class="tile tile-dark" id="about" aria-labelledby="about-title">
-      <div class="content center-copy">
-        <p class="eyebrow">About me</p>
-        <h2 id="about-title">Ideas become meaningful through practice.</h2>
-        <p class="lead">
-          I enjoy turning curiosity into thoughtful, useful work. Hands-on
-          projects help me learn, solve problems, and communicate discoveries
-          with clarity.
-        </p>
-        <a class="button button-secondary" href="#interests">Explore my values</a>
-      </div>
-    </section>
-
-    <section class="tile tile-parchment" id="interests" aria-labelledby="interests-title">
+    <section class="tile tile-parchment" id="resume" aria-labelledby="resume-title">
       <div class="content">
         <div class="center-copy">
-          <p class="eyebrow">What drives me</p>
-          <h2 id="interests-title">Three values. One direction.</h2>
-          <p class="lead">The principles that guide how I approach new work.</p>
+          <p class="eyebrow">CV / Resume</p>
+          <h2 id="resume-title">Education, skills, and experience.</h2>
+          <p class="lead">A concise overview of my academic and technical background.</p>
         </div>
 
-        <div class="values">
-          <article class="value">
-            <span class="value-number" aria-hidden="true">01</span>
-            <h3>Learning</h3>
-            <p>Building new skills through curiosity, practice, and reflection.</p>
+        <div class="detail-grid">
+          <article class="detail-card">
+            <h3>Education</h3>
+            <p><strong>Seoul National University</strong></p>
+            <p>Computer Science and Engineering<br>Undergraduate, 2026-Present</p>
           </article>
-          <article class="value">
-            <span class="value-number" aria-hidden="true">02</span>
-            <h3>Creating</h3>
-            <p>Transforming early ideas into clear and useful experiences.</p>
+          <article class="detail-card">
+            <h3>Skills</h3>
+            <ul>
+              <li>HTML and CSS</li>
+              <li>Responsive web design</li>
+              <li>Git and GitHub</li>
+              <li>Creative problem-solving</li>
+            </ul>
           </article>
-          <article class="value">
-            <span class="value-number" aria-hidden="true">03</span>
-            <h3>Connecting</h3>
-            <p>Working with others and communicating with care and purpose.</p>
+          <article class="detail-card">
+            <h3>Experience</h3>
+            <p><strong>Personal Website Developer</strong></p>
+            <p>Designed, built, tested, and deployed this responsive portfolio with GitHub Pages.</p>
+          </article>
+        </div>
+
+        <div class="resume-actions">
+          <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tile tile-dark" id="projects" aria-labelledby="projects-title">
+      <div class="content">
+        <div class="center-copy">
+          <p class="eyebrow">Activities and projects</p>
+          <h2 id="projects-title">Learning by building.</h2>
+          <p class="lead">Two practical projects that strengthened my technical skills.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project">
+            <span class="project-number" aria-hidden="true">01</span>
+            <h3>Personal Portfolio Website</h3>
+            <p>Created an accessible, responsive website with semantic HTML, custom CSS, profile content, and a downloadable CV.</p>
+            <a href="#top">View project</a>
+          </article>
+          <article class="project">
+            <span class="project-number" aria-hidden="true">02</span>
+            <h3>GitHub Pages Deployment</h3>
+            <p>Used Git version control and GitHub Pages to publish, update, and maintain a live static website.</p>
+            <a href="https://github.com/seongyun0000/seongyun0000.github.io" target="_blank" rel="noopener">View repository</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="tile tile-dark" id="resume" aria-labelledby="resume-title">
+    <section class="tile tile-light" id="courses" aria-labelledby="courses-title">
       <div class="content center-copy">
-        <p class="eyebrow">Resume</p>
-        <h2 id="resume-title">The full picture.</h2>
-        <p class="lead">Explore my experience, education, and background in one place.</p>
-        <div class="resume-actions">
-          <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
-          <a class="button button-secondary" href="#top">Back to top</a>
-        </div>
+        <p class="eyebrow">Planned coursework</p>
+        <h2 id="courses-title">Courses I plan to take.</h2>
+        <p class="lead">Subjects I intend to explore as I develop my computer science foundation.</p>
+        <ul class="course-list">
+          <li>Data Structures</li>
+          <li>Algorithms</li>
+          <li>Computer Systems</li>
+          <li>Database Systems</li>
+          <li>Artificial Intelligence</li>
+          <li>Web Programming</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="tile tile-dark" id="contact" aria-labelledby="contact-title">
+      <div class="content center-copy">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's connect.</h2>
+        <p class="lead">You can reach me by email or follow my work on GitHub.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:imyeah7@snu.ac.kr">imyeah7@snu.ac.kr</a></li>
+          <li><a href="https://github.com/seongyun0000" target="_blank" rel="noopener">github.com/seongyun0000</a></li>
+        </ul>
       </div>
     </section>
   </main>
@@ -617,7 +778,7 @@
   <footer>
     <div class="content footer-row">
       <p>&copy; 2026 Seongyun. Built for the web.</p>
-      <p><a href="assets/cv.pdf" target="_blank" rel="noopener">Resume</a></p>
+      <p><a href="mailto:imyeah7@snu.ac.kr">Contact</a> &nbsp; <a href="assets/cv.pdf" target="_blank" rel="noopener">Resume</a></p>
     </div>
   </footer>
 </body>
